@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import styles from './Cockpit.module.css'
 //import Aux from '../../Util/Auxilary'
 
 const cockpit = (props) => {
+    useEffect(() => {
+      console.log('[Cockpit.js] useEffect')
+      // Http request...
+      setTimeout(() => {
+        alert('Saved data to cloud!')
+      }, 1000);
+    }, []);
+
+    // useEffect
+
     const classes = [];
     let btnClass = styles.Button;
 

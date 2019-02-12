@@ -8,15 +8,15 @@ class Person extends Component{
         console.log('[Person.js] Inside Constructor', props)
       }
     
-      componentWillMount() {
-        console.log('[Person.js] Inside componentWillMount()')
-      }
+      // componentWillMount() {
+      //   console.log('[Person.js] Inside componentWillMount()')
+      // }
     
       componentDidMount() {
         console.log('[Person.js] Inside ComponentDidMount()')
       }
     render () {
-        console.log('[Peerson.js] Inside render()')
+        console.log('[Person.js] Inside render()')
        return (
         <div className={styles.Person}>
             <p onClick={this.props.click}>I'm a Person! My name is {this.props.name} and I am {this.props.age} years old</p>

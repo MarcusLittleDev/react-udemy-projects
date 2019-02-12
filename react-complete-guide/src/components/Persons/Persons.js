@@ -8,17 +8,22 @@ class Persons extends Component {
     console.log('[Persons.js] Inside Constructor', props)
   }
 
-  componentWillMount() {
-    console.log('[Persons.js] Inside componentWillMount()')
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('[Persons.js] getDerivedStateFromProps');
+  //   return state;
+  // }
 
-  componentDidMount() {
-    console.log('[Persons.js] Inside ComponentDidMount()')
-  }
+  // componentWillMount() {
+  //   console.log('[Persons.js] Inside componentWillMount()')
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('[UPDATE Persons.js Inside componentWillReceiveProps', nextProps)
-  }
+  // componentDidMount() {
+  //   console.log('[Persons.js] Inside ComponentDidMount()')
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('[UPDATE Persons.js Inside componentWillReceiveProps', nextProps)
+  // }
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[UPDATE Persons.js] Inside shouldComponentUpdate', nextProps, nextState)
@@ -28,12 +33,17 @@ class Persons extends Component {
     //return true;
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState)
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('[Persons.js] getSnapshotBeforeUpdate');
+    return {message: 'Snapshot!'};
   }
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState)
+  // }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('[UPDATE Persons.js] Inside componentDidUpdate')
+    console.log(snapshot);
   }
 
 render() {

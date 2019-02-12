@@ -1,45 +1,53 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Component } from 'react';
 
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 import styles from './App.module.css';
 import WithClass from '../hoc/WithClass'
 
-class App extends PureComponent {
+class App extends Component {
   constructor(props) {
     super(props);
-    console.log('[App.js] Inside Constructor', props)
-    this.state = {
-      persons: [
-        {id: 'df', name: 'Max', age:28},
-        {id: 'eewf', name: 'Manu', age: 29},
-        {id: 'fgdsf', name: 'Stephanie', age: 26}
-      ],
-      showPersons: false
-    }
+    console.log('[App.js] Inside Constructor', props) 
   }
 
-  componentWillMount() {
-    console.log('[App.js] Inside componentWillMount()')
+  state = {
+    persons: [
+      {id: 'df', name: 'Max', age:28},
+      {id: 'eewf', name: 'Manu', age: 29},
+      {id: 'fgdsf', name: 'Stephanie', age: 26}
+    ],
+    otherState: 'some other value',
+    showPersons: false
   }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  // componentWillMount() {
+  //   console.log('[App.js] Inside componentWillMount()')
+  // }
 
   componentDidMount() {
     console.log('[App.js] Inside ComponentDidMount()')
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState)
-  //   return nextState.persons !== this.state.persons ||
-  //     nextState.showPersons !== this.state.showPersons;
-  // }
-
-  componentWillUpdate(nextProps, nextState) {
-    console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState)
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState)
+    return nextState.persons !== this.state.persons ||
+      nextState.showPersons !== this.state.showPersons;
   }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState)
+  // }
 
   componentDidUpdate() {
     console.log('[UPDATE App.js] Inside componentDidUpdate')
   }
+
   switchNameHandler = (newName) => {
     this.setState(
       {persons: [
@@ -94,12 +102,10 @@ class App extends PureComponent {
 
     if (this.state.showPersons === true) {
       persons = (
-        <div>
           <Persons
             persons = {this.state.persons}
             clicked = {this.deletePersonHandler}
             changed = {this.nameChangedHandler} />
-        </div>
       )
     }
 
