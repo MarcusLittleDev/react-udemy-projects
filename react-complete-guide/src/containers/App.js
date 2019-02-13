@@ -3,7 +3,7 @@ import React, { PureComponent, Component } from 'react';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 import styles from './App.module.css';
-import WithClass from '../hoc/WithClass'
+import withClass from '../hoc/withClass'
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +18,8 @@ class App extends Component {
       {id: 'fgdsf', name: 'Stephanie', age: 26}
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -37,7 +38,8 @@ class App extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState)
     return nextState.persons !== this.state.persons ||
-      nextState.showPersons !== this.state.showPersons;
+      nextState.showPersons !== this.state.showPersons
+      ||nextState.showCockpit !== this.state.showCockpit;
   }
 
   // componentWillUpdate(nextProps, nextState) {
@@ -110,17 +112,21 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={styles.App}>
-        <button onClick={() => {this.setState({showPersons: true})}}>Show Persons</button>
-        <Cockpit
+      <React.Fragment>
+        <button onClick={() => {
+          this.setState({ showCockpit: false});
+        }}
+        >Remove Cockpit</button>
+        {this.state.showCockpit ?( <Cockpit
           appTitle={this.props.title}
           showPersons={this.state.showPersons}
-          persons={this.state.persons}
+          personsLength={this.state.persons.length}
           clicked={this.togglePersonsHandler}/>
+         ) :null}
         {persons}
-      </WithClass>
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+export default withClass(App, styles.App);

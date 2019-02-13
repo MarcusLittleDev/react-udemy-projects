@@ -10,9 +10,19 @@ const cockpit = (props) => {
       setTimeout(() => {
         alert('Saved data to cloud!')
       }, 1000);
+      return () => {
+        console.log('[Cockpit.js] cleanup work in useEffect')
+      }
     }, []);
 
-    // useEffect
+    useEffect(() => {
+      console.log('[Cockpit.js] 2nd useEffect');
+      return () => {
+        console.log('[Cockpit.js] cleanup work in 2nd useEffect')
+      }
+    })
+
+    // useEffect()
 
     const classes = [];
     let btnClass = styles.Button;
@@ -21,10 +31,10 @@ const cockpit = (props) => {
         btnClass = [styles.Button, styles.Red].join(" ");
     }
 
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
       classes.push(styles.red);
     }
-    if (props.persons.length <=1) {
+    if (props.personsLength <=1) {
       classes.push(styles.bold);
     }
 
@@ -39,4 +49,4 @@ const cockpit = (props) => {
     )
 }
 
-export default cockpit;
+export default React.memo(cockpit);
