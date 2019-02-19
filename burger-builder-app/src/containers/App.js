@@ -4,11 +4,7 @@ import './App.module.css';
 import Layout from '../components/Layout/Layout'
 import BurgerBuilder from '../containers/BurgerBuilder/BurgerBuilder'
 
-interface Props {}
-
-interface State {}
-
-class App extends Component<Props, State> {
+class App extends Component {
   render() {
     return (
       <div>
