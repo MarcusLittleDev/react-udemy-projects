@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
-    // componentWillUpdate() {
-    //     console.log("[Order Summary] will update")
-    // }
+    componentWillUpdate() {
+        console.log("[Order Summary] will update")
+    }
 
     render () {
         const ingredientSummary = Object.keys(this.props.ingredients)
