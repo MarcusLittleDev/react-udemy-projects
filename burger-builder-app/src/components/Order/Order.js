@@ -2,11 +2,32 @@ import React from 'react';
 
 import classes from './Order.module.css';
 
-const order = props => (
-    <div className={classes.Order}>
-        <p>Ingredients:</p>
-        <p>Price: <strong>3</strong></p>
-    </div>
-)
+const order = props => {
+    const ingredients = [];
+
+    for (let ingredientName in props.ingredients) {
+        if(Number.parseInt(props.ingredients[ingredientName]) > 0)
+        ingredients.push(
+           <span
+            style={{
+                textTransform:'capitalize',
+                display: 'inline-block',
+                margin: '0 8px',
+                border: '1px solid #ccc',
+                padding: '5px'
+            }}
+            key={ingredientName}> 
+            {ingredientName} ({props.ingredients[ingredientName]})
+           </span>
+        );
+    }
+
+    return(
+        <div className={classes.Order}>
+            <p>Ingredients: {ingredients}</p>
+            <p>Price: <strong>{Number.parseFloat(props.price).toFixed(2)}</strong></p>
+        </div>
+    )
+}
 
 export default order;
