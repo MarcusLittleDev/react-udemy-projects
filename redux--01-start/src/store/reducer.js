@@ -1,9 +1,11 @@
-const initialState ={
-    counter: 0
-}
+import {combineReducers} from 'redux';
 
-const reducer = (state = initialState, action) => {
-    return state;
-}
+import counter from './reducers/counter'
+import result from './reducers/result';
 
-export default reducer
+export const reducer = combineReducers({
+    counter,
+    result
+});
+
+export default reducer;
