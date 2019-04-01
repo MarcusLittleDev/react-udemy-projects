@@ -1,0 +1,24 @@
+import * as actionTypes from './actionTypes'
+export const resultActionCreators = {
+    storeResult: value => {
+        return dispatch => {
+            setTimeout(() => {
+                dispatch(saveResult(value))
+            }, 2000)
+        }
+    },
+
+    deleteResult:  resultId => {
+        return {
+            type: actionTypes.DELETE_RESULT,
+            resultId
+        }
+    }
+}
+
+const saveResult = value => {
+    return {
+        type: actionTypes.STORE_RESULT,
+        value
+    }
+}
