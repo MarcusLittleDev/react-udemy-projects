@@ -1,7 +1,8 @@
 import * as actionTypes from './actionTypes'
 export const resultActionCreators = {
     storeResult: value => {
-        return dispatch => {
+        return (dispatch, getState) => {
+           // console.log(getState().counter.counter)
             setTimeout(() => {
                 dispatch(saveResult(value))
             }, 2000)
