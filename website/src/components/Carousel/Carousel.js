@@ -6,37 +6,40 @@ const carousel = props => (
   <Carousel className={classes.Carousel}>
     <Carousel.Item>
       <img
-        className="d-block w-100 "
+        className="d-block w-100 vh-100"
         src="http://placehold.it/400x300&text=slide1"
         alt="First slide"
       />
       <Carousel.Caption>
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h3>Welcome to my Personal Site</h3>
+        <p>Created using React</p>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
       <img
-        className="d-block w-100 "
+        className="d-block w-100 vh-100"
         src="http://placehold.it/400x300&text=slide2"
         alt="Second slide"
       />
 
       <Carousel.Caption>
-        <h3>Second slide label</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3>My Portfolio</h3>
+        <p>
+          Projects of my own creation. <br />
+          You will find demos and explanations of any projects I do.
+        </p>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
       <img
-        className="d-block w-100"
+        className="d-block w-100 vh-100"
         src="http://placehold.it/400x300&text=slide3"
         alt="Third slide"
       />
 
       <Carousel.Caption>
-        <h3>Third slide label</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <h3>Coming Soon...</h3>
+        <p>Blog Page</p>
       </Carousel.Caption>
     </Carousel.Item>
   </Carousel>

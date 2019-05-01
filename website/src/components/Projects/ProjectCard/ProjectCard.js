@@ -3,7 +3,10 @@ import { Card } from "react-bootstrap";
 import classes from "./ProjectCard.module.css";
 
 const projectCard = props => (
-  <Card className={classes.ProjectCard} text-white>
+  <Card
+    className={[classes.ProjectCard, classes.floating].join(" ")}
+    text-white
+  >
     <Card.Img
       src={"http://placehold.it/100x100&text=" + props.title}
       alt={props.title}
